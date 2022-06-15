@@ -13,7 +13,7 @@ vars:
     prompt: What is the name of the dart CLI?
   executable_name:
     type: string
-    description: The name of the main execubale (a.k.a the name of the root command)
+    description: The name of the main executable (a.k.a the name of the root command)
     default: my_executable
     prompt: What is the name of the main executable?
   description:
