@@ -1,0 +1,8 @@
+name: generator
+description: A template generator for Very Good Dart CLI.
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+dependencies:
+  path: ^1.8.0
