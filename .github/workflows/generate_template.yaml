@@ -1,0 +1,14 @@
+name: generate_template
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: noop
+        run: echo 'not implemented yet'
+

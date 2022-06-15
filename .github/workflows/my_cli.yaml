@@ -1,0 +1,25 @@
+name: my_cli
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/my_cli.yaml"
+      - "my_cli/lib/**"
+      - "my_cli/test/**"
+      - "my_cli/pubspec.yaml"
+      - "tool/generator/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/my_cli.yaml"
+      - "my_cli/lib/**"
+      - "my_cli/test/**"
+      - "my_cli/pubspec.yaml"
+      - "tool/generator/**"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1.3.0
+    with:
+      working_directory: my_cli
