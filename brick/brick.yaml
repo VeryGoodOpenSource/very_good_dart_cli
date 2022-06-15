@@ -15,7 +15,7 @@ vars:
     type: string
     description: The name of the main execubale (a.k.a the name of the root command)
     default: my_executable
-    prompt: What is the name of the main execubale?
+    prompt: What is the name of the main executable?
   description:
     type: string
     description: A short description for the CLI
