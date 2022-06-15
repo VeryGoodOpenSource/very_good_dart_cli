@@ -4,9 +4,9 @@ import 'package:path/path.dart' as p;
 
 final targetPath = p.join('brick', '__brick__');
 final sourcePath = p.join('my_cli');
-final year = DateTime.now().year;
+
 final copyrightHeader = '''
-// Copyright (c) $year, Very Good Ventures
+// Copyright (c) {{current_year}}, Very Good Ventures
 // https://verygood.ventures
 //
 // Use of this source code is governed by an MIT-style
@@ -51,7 +51,9 @@ void main() async {
               // executable_name
               .replaceAll('my_executable', '{{executable_name.snakeCase()}}')
               // description
-              .replaceAll('A Very Good CLI application', '{{description}}'),
+              .replaceAll('A Very Good CLI application', '{{description}}')
+          // year
+          .replaceAll('2022', '{{current_year}}'),
         );
 
         final fileSegments = file.path.split('/').sublist(2);
