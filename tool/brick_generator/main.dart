@@ -34,7 +34,7 @@ void main() async {
       var file = _;
 
       try {
-        // Generated file, to dot create it with copyright header
+        // Generated file, do not create it with copyright header
         final isVersionFile =
             file.path != 'brick/__brick__/my_cli/lib/src/version.dart';
         if (p.extension(file.path) == '.dart' && isVersionFile) {
