@@ -20,7 +20,6 @@ void main() async {
   if (targetDir.existsSync()) {
     await targetDir.delete(recursive: true);
   }
-  await Shell.mkdir(targetDir.path);
 
   // Copy Project Files
   await Shell.cp(sourcePath, targetPath);
@@ -36,8 +35,9 @@ void main() async {
       try {
         // Generated file, do not create it with copyright header
         final isVersionFile =
-            file.path != 'brick/__brick__/my_cli/lib/src/version.dart';
-        if (p.extension(file.path) == '.dart' && isVersionFile) {
+            file.path == 'brick/__brick__/my_cli/lib/src/version.dart';
+
+        if (p.extension(file.path) == '.dart' && !isVersionFile) {
           final contents = await file.readAsString();
           file = await file.writeAsString('$copyrightHeader\n$contents');
         }
@@ -80,8 +80,6 @@ void main() async {
       } catch (_) {}
     }),
   );
-
-  Directory(p.join(targetPath, 'my_cli')).deleteSync(recursive: true);
 }
 
 class Shell {

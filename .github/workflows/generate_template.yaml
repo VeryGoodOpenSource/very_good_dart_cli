@@ -35,6 +35,6 @@ jobs:
           labels: bot
           author: VGV Bot <vgvbot@users.noreply.github.com>
           assignees: vgvbot
-          reviewers: felangel
+          reviewers: felangel, renancaraujo
           committer: VGV Bot <vgvbot@users.noreply.github.com>
 
