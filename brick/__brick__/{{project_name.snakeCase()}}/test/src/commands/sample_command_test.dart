@@ -71,12 +71,14 @@ void main() {
       verify(() => logger.err('Could not find an option or flag "-p".'))
           .called(1);
       verify(
-        () => logger.info('''
+        () => logger.info(
+          '''
 Usage: {{executable_name.snakeCase()}} sample [arguments]
 -h, --help    Print this usage information.
 -c, --cyan    Prints the same joke, but in cyan
 
-Run "{{executable_name.snakeCase()}} help" to see global options.'''),
+Run "{{executable_name.snakeCase()}} help" to see global options.''',
+        ),
       ).called(1);
     });
   });
