@@ -8,8 +8,8 @@ environment:
 vars:
   project_name:
     type: string
-    description: The name of the dart CLI (also the name of the package)
-    default: my_cli
+    description: The name of the dart CLI (it will be fromatted also to be the name of the package)
+    default: some_custom_cli
     prompt: What is the name of the dart CLI?
   executable_name:
     type: string
