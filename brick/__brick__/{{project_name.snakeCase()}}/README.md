@@ -35,11 +35,14 @@ $ {{executable_name.snakeCase()}} sample --cyan
 
 # Show CLI version
 $ {{executable_name.snakeCase()}} --version
+
+# Show usage help
+$ {{executable_name.snakeCase()}} --help
 ```
 
 ## Running Tests with coverage 🧪
 
-To run all unit and widget tests use the following command:
+To run all unit tests use the following command:
 
 ```sh
 $ dart pub global activate coverage 1.2.0
@@ -61,13 +64,8 @@ $ open coverage/index.html
 ---
 
 [coverage_badge]: coverage_badge.svg
-
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
-
 [license_link]: https://opensource.org/licenses/MIT
-
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
-
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli

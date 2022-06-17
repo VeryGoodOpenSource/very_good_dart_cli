@@ -13,7 +13,7 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install Dependencies
-        working-directory: tool/generator
+        working-directory: tool/brick_generator
         run: dart pub get
 
       - name: Generate Template

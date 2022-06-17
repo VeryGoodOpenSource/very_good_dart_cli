@@ -34,7 +34,10 @@ void main() async {
       var file = _;
 
       try {
-        if (p.extension(file.path) == '.dart') {
+        // Generated file, to dot create it with copyright header
+        final isVersionFile =
+            file.path != 'brick/__brick__/my_cli/lib/src/version.dart';
+        if (p.extension(file.path) == '.dart' && isVersionFile) {
           final contents = await file.readAsString();
           file = await file.writeAsString('$copyrightHeader\n$contents');
         }
@@ -52,8 +55,8 @@ void main() async {
               .replaceAll('my_executable', '{{executable_name.snakeCase()}}')
               // description
               .replaceAll('A Very Good CLI application', '{{description}}')
-          // year
-          .replaceAll('2022', '{{current_year}}'),
+              // year
+              .replaceAll('2022', '{{current_year}}'),
         );
 
         final fileSegments = file.path.split('/').sublist(2);
