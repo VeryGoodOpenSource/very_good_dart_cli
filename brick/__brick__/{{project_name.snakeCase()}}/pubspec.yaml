@@ -1,5 +1,5 @@
-name: my_cli
-description: A Very Good CLI application
+name: {{project_name.snakeCase()}}
+description: {{description}}
 version: 0.0.1
 publish_to: none
 
@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  mason_logger: ^0.1.0-dev.12
+  mason_logger: ^0.1.0-dev.8
   pub_updater: ^0.2.1
 
 dev_dependencies:
@@ -19,4 +19,4 @@ dev_dependencies:
   very_good_analysis: ^3.0.1
 
 executables:
-  my_executable:
+  {{executable_name.snakeCase()}}:
