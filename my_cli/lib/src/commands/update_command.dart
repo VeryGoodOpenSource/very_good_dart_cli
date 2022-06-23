@@ -1,5 +1,5 @@
 import 'package:args/command_runner.dart';
-import 'package:mason_logger/mason_logger.dart' hide packageVersion;
+import 'package:mason_logger/mason_logger.dart';
 import 'package:my_cli/src/command_runner.dart';
 import 'package:my_cli/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
