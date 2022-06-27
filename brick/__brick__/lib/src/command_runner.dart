@@ -40,8 +40,7 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
     );
 
     // Add sub commands
-    addCommand(SampleCommand(logger: _logger));
-    addCommand(UpdateCommand(logger: _logger, pubUpdater: _pubUpdater));
+    addCommand(SampleCommand(logger: logger));
   }
 
   final Logger _logger;
