@@ -1,7 +1,11 @@
 name: generate_template
 
 on:
-  pull_request:
+  push:
+    paths:
+      - .github/workflows/generate_template.yaml
+      - tool/generator/**
+      - my_cli/**
     branches:
       - main
 
@@ -37,4 +41,3 @@ jobs:
           assignees: vgvbot
           reviewers: felangel, renancaraujo
           committer: VGV Bot <vgvbot@users.noreply.github.com>
-
