@@ -33,7 +33,8 @@ class MyCLICommandRunner extends CommandRunner<int> {
     );
 
     // Add sub commands
-    addCommand(SampleCommand(logger: logger));
+    addCommand(SampleCommand(logger: _logger));
+    addCommand(UpdateCommand(logger: _logger, pubUpdater: _pubUpdater));
   }
 
   final Logger _logger;
