@@ -6,3 +6,4 @@
 // https://opensource.org/licenses/MIT.
 
 export 'sample_command.dart';
+export 'update_command.dart';
