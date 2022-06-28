@@ -5,7 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:mason_logger/mason_logger.dart' hide packageVersion;
+import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name.snakeCase()}}/src/command_runner.dart';
 import 'package:{{project_name.snakeCase()}}/src/commands/commands.dart';
