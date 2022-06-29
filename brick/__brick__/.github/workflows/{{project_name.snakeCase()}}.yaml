@@ -17,10 +17,13 @@ on:
       - "pubspec.yaml"
 
 jobs:
-  build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1.3.0
+  semantic-pull-request:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
-  verify_version:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+
+  verify-version:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
