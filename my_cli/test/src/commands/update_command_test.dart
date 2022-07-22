@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_cli/src/command_runner.dart';
@@ -5,7 +7,6 @@ import 'package:my_cli/src/commands/commands.dart';
 import 'package:my_cli/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
-import 'package:universal_io/io.dart';
 
 class FakeProcessResult extends Fake implements ProcessResult {}
 
