@@ -34,8 +34,8 @@ the [Very Good CLI][very_good_cli_link].
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
-[very_good_ventures_link]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=core
-[very_good_ventures_link_light]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=core#gh-light-mode-only
-[very_good_ventures_link_dark]: https://verygood.ventures/?utm_source=github&utm_medium=banner&utm_campaign=core#gh-dark-mode-only
+[very_good_ventures_link]: https://verygood.ventures
+[very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
+[very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
 [dart_cli_guide]: https://dart.dev/tutorials/server/cmdline
 [mason_link]: https://pub.dev/packages/mason_cli
