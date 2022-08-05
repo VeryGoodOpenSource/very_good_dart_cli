@@ -91,7 +91,7 @@ class MyCLICommandRunner extends CommandRunner<int> {
           ..info(
             '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
-Run ${lightCyan.wrap('dart pub global activate my_cli')} to update''',
+Run ${lightCyan.wrap('my_executable update')} to update''',
           );
       }
     } catch (_) {}
