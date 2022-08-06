@@ -21,7 +21,7 @@ const latestVersion = '0.0.0';
 
 final updatePrompt = '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
-Run ${lightCyan.wrap('dart pub global activate {{project_name.snakeCase()}}')} to update''';
+Run ${lightCyan.wrap('{{executable_name.snakeCase()}} update')} to update''';
 
 void main() {
   group('{{project_name.pascalCase()}}CommandRunner', () {
