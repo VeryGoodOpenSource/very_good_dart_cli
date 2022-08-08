@@ -51,7 +51,7 @@ void main() {
     });
 
     test('can be instantiated without explicit logger and pub updater', () {
-      final command = UpdateCommand();
+      final command = UpdateCommand(logger: logger);
       expect(command, isNotNull);
     });
 

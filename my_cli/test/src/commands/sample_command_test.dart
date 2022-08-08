@@ -31,7 +31,7 @@ void main() {
     });
 
     test('can be instantiated without explicit logger', () {
-      final command = SampleCommand();
+      final command = SampleCommand(logger: logger);
       expect(command, isNotNull);
     });
 

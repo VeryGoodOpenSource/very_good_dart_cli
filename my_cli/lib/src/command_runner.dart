@@ -25,12 +25,17 @@ class MyCLICommandRunner extends CommandRunner<int> {
         _pubUpdater = pubUpdater ?? PubUpdater(),
         super(executableName, description) {
     // Add root options and flags
-    argParser.addFlag(
-      'version',
-      abbr: 'v',
-      negatable: false,
-      help: 'Print the current version.',
-    );
+    argParser
+      ..addFlag(
+        'version',
+        abbr: 'v',
+        negatable: false,
+        help: 'Print the current version.',
+      )
+      ..addFlag(
+        'verbose',
+        help: 'Noisy logging, including all shell commands executed.',
+      );
 
     // Add sub commands
     addCommand(SampleCommand(logger: _logger));
@@ -44,6 +49,9 @@ class MyCLICommandRunner extends CommandRunner<int> {
   Future<int> run(Iterable<String> args) async {
     try {
       final topLevelResults = parse(args);
+      if (topLevelResults['verbose'] == true) {
+        _logger.level = Level.verbose;
+      }
       return await runCommand(topLevelResults) ?? ExitCode.success.code;
     } on FormatException catch (e, stackTrace) {
       // On format errors, show the commands error message, root usage and
@@ -67,6 +75,26 @@ class MyCLICommandRunner extends CommandRunner<int> {
 
   @override
   Future<int?> runCommand(ArgResults topLevelResults) async {
+    _logger
+      ..detail('Argument information:')
+      ..detail('  Top level options:');
+    for (final option in topLevelResults.options) {
+      if (topLevelResults.wasParsed(option)) {
+        _logger.detail('  - $option: ${topLevelResults[option]}');
+      }
+    }
+    if (topLevelResults.command != null) {
+      final commandResult = topLevelResults.command!;
+      _logger
+        ..detail('  Command: ${commandResult.name}')
+        ..detail('    Command options:');
+      for (final option in commandResult.options) {
+        if (commandResult.wasParsed(option)) {
+          _logger.detail('    - $option: ${commandResult[option]}');
+        }
+      }
+    }
+
     final int? exitCode;
     if (topLevelResults['version'] == true) {
       _logger.info(packageVersion);

@@ -90,5 +90,34 @@ void main() {
         verify(() => logger.info(packageVersion)).called(1);
       });
     });
+
+    group('--verbose', () {
+      test('enables verbose logging', () async {
+        final result = await commandRunner.run(['--verbose']);
+        expect(result, equals(ExitCode.success.code));
+
+        verify(() => logger.detail('Argument information:')).called(1);
+        verify(() => logger.detail('  Top level options:')).called(1);
+        verify(() => logger.detail('  - verbose: true')).called(1);
+        verifyNever(() => logger.detail('    Command options:'));
+      });
+
+      test('enables verbose logging for sub commands', () async {
+        final result = await commandRunner.run([
+          '--verbose',
+          'create',
+          '-t',
+          'dart_pkg',
+        ]);
+        expect(result, equals(ExitCode.usage.code));
+
+        verify(() => logger.detail('Argument information:')).called(1);
+        verify(() => logger.detail('  Top level options:')).called(1);
+        verify(() => logger.detail('  - verbose: true')).called(1);
+        verify(() => logger.detail('  Command: create')).called(1);
+        verify(() => logger.detail('    Command options:')).called(1);
+        verify(() => logger.detail('    - template: dart_pkg')).called(1);
+      });
+    });
   });
 }
