@@ -8,7 +8,6 @@
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:{{project_name.snakeCase()}}/src/command_runner.dart';
-import 'package:{{project_name.snakeCase()}}/src/commands/commands.dart';
 import 'package:{{project_name.snakeCase()}}/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
@@ -35,11 +34,6 @@ void main() {
         logger: logger,
         pubUpdater: pubUpdater,
       );
-    });
-
-    test('can be instantiated without explicit logger', () {
-      final command = SampleCommand();
-      expect(command, isNotNull);
     });
 
     test('tells a joke', () async {
