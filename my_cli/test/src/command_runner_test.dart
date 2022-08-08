@@ -14,7 +14,7 @@ const latestVersion = '0.0.0';
 
 final updatePrompt = '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
-Run ${lightCyan.wrap('dart pub global activate my_cli')} to update''';
+Run ${lightCyan.wrap('my_executable update')} to update''';
 
 void main() {
   group('MyCLICommandRunner', () {
