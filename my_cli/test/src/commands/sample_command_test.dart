@@ -1,7 +1,6 @@
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_cli/src/command_runner.dart';
-import 'package:my_cli/src/commands/commands.dart';
 import 'package:my_cli/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
@@ -28,11 +27,6 @@ void main() {
         logger: logger,
         pubUpdater: pubUpdater,
       );
-    });
-
-    test('can be instantiated without explicit logger', () {
-      final command = SampleCommand(logger: logger);
-      expect(command, isNotNull);
     });
 
     test('tells a joke', () async {

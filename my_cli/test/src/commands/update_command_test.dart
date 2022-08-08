@@ -50,7 +50,7 @@ void main() {
       ).thenAnswer((_) => Future.value(true));
     });
 
-    test('can be instantiated without explicit logger and pub updater', () {
+    test('can be instantiated without a pub updater', () {
       final command = UpdateCommand(logger: logger);
       expect(command, isNotNull);
     });
