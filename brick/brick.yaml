@@ -1,6 +1,7 @@
 name: very_good_dart_cli
-description: A very good dart CLI template
-version: 0.1.0+1
+description: A Very Good Dart CLI created by Very Good Ventures.
+repository: https://github.com/VeryGoodOpenSource/very_good_dart_cli
+version: 0.0.1
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
@@ -8,16 +9,16 @@ environment:
 vars:
   project_name:
     type: string
-    description: The name of the dart CLI (it will be fromatted also to be the name of the package)
-    default: some_custom_cli
-    prompt: What is the name of the dart CLI?
+    description: The name of the Dart CLI (it will also be used for the package name)
+    default: my_cli
+    prompt: What is the name of the Dart CLI?
   executable_name:
     type: string
     description: The name of the main executable (a.k.a the name of the root command)
-    default: my_executable
+    default: my_cli
     prompt: What is the name of the main executable?
   description:
     type: string
     description: A short description for the CLI
-    default: A Very Good CLI application
+    default: A Very Good Dart CLI
     prompt: Please enter a description for the CLI.
