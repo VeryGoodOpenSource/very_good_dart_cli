@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 
 final targetPath = p.join('brick', '__brick__');
-final sourcePath = p.join('my_cli');
+final sourcePath = p.join('src');
 
 final copyrightHeader = '''
 // Copyright (c) {{current_year}}, Very Good Ventures
@@ -26,7 +26,7 @@ void main() async {
 
   // Convert Values to Variables
   await Future.wait(
-    Directory(targetPath)
+    Directory(p.join(targetPath, 'my_cli'))
         .listSync(recursive: true)
         .whereType<File>()
         .map((_) async {
@@ -80,6 +80,7 @@ void main() async {
       } catch (_) {}
     }),
   );
+  await Directory(p.join(targetPath, 'my_cli')).delete(recursive: true);
 }
 
 class Shell {
