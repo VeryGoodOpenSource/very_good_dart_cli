@@ -26,7 +26,7 @@ This repository contains a sample [Dart CLI application][dart_cli_guide] contain
 This Dart CLI application serves as base for the [Mason][mason_link] brick template under `/brick` used by 
 the [Very Good CLI][very_good_cli_link].
 
-[coverage_badge]: my_cli/coverage_badge.svg
+[coverage_badge]: src/my_cli/coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
