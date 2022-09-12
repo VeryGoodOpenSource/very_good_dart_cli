@@ -1,0 +1,19 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_cli"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/brick/hooks"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/tool/brick_generator"
+    schedule:
+      interval: "daily"

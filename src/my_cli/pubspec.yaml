@@ -4,7 +4,7 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   mason_logger: ^0.1.1
@@ -16,7 +16,7 @@ dev_dependencies:
   build_version: ^2.0.0
   mocktail: ^0.3.0
   test: ^1.19.2
-  very_good_analysis: ^3.0.1
+  very_good_analysis: ^3.0.2
 
 executables:
   my_executable:
