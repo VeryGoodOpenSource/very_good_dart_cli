@@ -17,6 +17,7 @@ A Very Good Dart CLI created by Very Good Ventures 🦄.
 - ✅ Automatic update prompts
 - ✅ GitHub Workflow powered by [Very Good Workflows][very_good_workflows_link]
 - ✅ Strict lint rules powered by [Very Good Analysis][very_good_analysis_link]
+- ✅ Dependabot Integration
 - ✅ 100% Test Coverage
 - ✅ Fully Documented Public API
 - ✅ MIT License
@@ -26,6 +27,7 @@ A Very Good Dart CLI created by Very Good Ventures 🦄.
 
 ```sh
 ├── .github
+│   ├── dependabot.yaml
 │   └── workflows
 │       └── my_cli.yaml
 ├── .gitignore
