@@ -1,3 +1,7 @@
+# 0.1.1
+
+- feat: upgrade to very_good_analysis 3.1.0
+
 # 0.1.0
 
 - feat: upgrade to Dart 2.18
