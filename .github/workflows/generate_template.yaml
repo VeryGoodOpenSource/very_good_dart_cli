@@ -5,7 +5,7 @@ on:
     paths:
       - .github/workflows/generate_template.yaml
       - tool/generator/**
-      - my_cli/**
+      - src/my_cli/**
     branches:
       - main
 
