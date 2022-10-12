@@ -60,11 +60,11 @@ void main() {
       verify(
         () => logger.info(
           '''
-Usage: my_executable sample [arguments]
+Usage: $executableName sample [arguments]
 -h, --help    Print this usage information.
 -c, --cyan    Prints the same joke, but in cyan
 
-Run "my_executable help" to see global options.''',
+Run "$executableName help" to see global options.''',
         ),
       ).called(1);
     });
