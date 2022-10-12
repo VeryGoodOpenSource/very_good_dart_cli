@@ -126,7 +126,7 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
           ..info(
             '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
-Run ${lightCyan.wrap('{{executable_name.snakeCase()}} update')} to update''',
+Run ${lightCyan.wrap('$executableName update')} to update''',
           );
       }
     } catch (_) {}
