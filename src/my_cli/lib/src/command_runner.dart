@@ -119,7 +119,7 @@ class MyCLICommandRunner extends CommandRunner<int> {
           ..info(
             '''
 ${lightYellow.wrap('Update available!')} ${lightCyan.wrap(packageVersion)} \u2192 ${lightCyan.wrap(latestVersion)}
-Run ${lightCyan.wrap('my_executable update')} to update''',
+Run ${lightCyan.wrap('$executableName update')} to update''',
           );
       }
     } catch (_) {}
