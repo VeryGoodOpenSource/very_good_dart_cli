@@ -67,11 +67,11 @@ void main() {
       verify(
         () => logger.info(
           '''
-Usage: {{executable_name.snakeCase()}} sample [arguments]
+Usage: $executableName sample [arguments]
 -h, --help    Print this usage information.
 -c, --cyan    Prints the same joke, but in cyan
 
-Run "{{executable_name.snakeCase()}} help" to see global options.''',
+Run "$executableName help" to see global options.''',
         ),
       ).called(1);
     });
