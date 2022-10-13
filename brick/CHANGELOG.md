@@ -1,3 +1,8 @@
+# 0.1.2
+
+- chore(deps): upgrade to mason_logger 0.2.0
+- fix: use available global constant for executable name
+
 # 0.1.1
 
 - feat: upgrade to very_good_analysis 3.1.0
