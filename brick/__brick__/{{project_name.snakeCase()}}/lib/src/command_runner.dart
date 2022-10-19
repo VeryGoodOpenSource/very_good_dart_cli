@@ -49,6 +49,9 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
     addCommand(UpdateCommand(logger: _logger, pubUpdater: _pubUpdater));
   }
 
+  @override
+  void printUsage() => _logger.info(usage);
+
   final Logger _logger;
   final PubUpdater _pubUpdater;
 
@@ -109,7 +112,9 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
     } else {
       exitCode = await super.runCommand(topLevelResults);
     }
-    await _checkForUpdates();
+    if (topLevelResults.command?.name != UpdateCommand.commandName) {
+      await _checkForUpdates();
+    }
     return exitCode;
   }
 
