@@ -13,6 +13,8 @@ import 'package:{{project_name.snakeCase()}}/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
+import 'commands/update_command_test.dart';
+
 class MockLogger extends Mock implements Logger {}
 
 class MockPubUpdater extends Mock implements PubUpdater {}
@@ -52,6 +54,33 @@ void main() {
       final result = await commandRunner.run(['--version']);
       expect(result, equals(ExitCode.success.code));
       verify(() => logger.info(updatePrompt)).called(1);
+    });
+
+    test('doesnt show update message when nsuing update command', () async {
+      when(
+        () => pubUpdater.getLatestVersion(any()),
+      ).thenAnswer((_) async => latestVersion);
+      when(
+        () => pubUpdater.update(packageName: packageName),
+      ).thenAnswer((_) => Future.value(FakeProcessResult()));
+      when(
+        () => pubUpdater.isUpToDate(
+          packageName: any(named: 'packageName'),
+          currentVersion: any(named: 'currentVersion'),
+        ),
+      ).thenAnswer((_) => Future.value(true));
+
+      final progress = MockProgress();
+      final progressLogs = <String>[];
+      when(() => progress.complete(any())).thenAnswer((_) {
+        final message = _.positionalArguments.elementAt(0) as String?;
+        if (message != null) progressLogs.add(message);
+      });
+      when(() => logger.progress(any())).thenReturn(progress);
+
+      final result = await commandRunner.run(['update']);
+      expect(result, equals(ExitCode.success.code));
+      verifyNever(() => logger.info(updatePrompt));
     });
 
     test('can be instantiated without an explicit analytics/logger instance',
