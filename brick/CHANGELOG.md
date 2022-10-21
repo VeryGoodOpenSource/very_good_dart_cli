@@ -1,3 +1,7 @@
+# 0.1.3
+
+- fix: update prompt on update
+
 # 0.1.2
 
 - chore(deps): upgrade to mason_logger 0.2.0
