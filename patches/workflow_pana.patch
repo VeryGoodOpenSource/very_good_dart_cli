@@ -1,0 +1,15 @@
+diff --git a/src/my_cli/.github/workflows/my_cli.yaml b/src/my_cli/.github/workflows/my_cli.yaml
+index c0cb0e7..cf38411 100644
+--- a/src/my_cli/.github/workflows/my_cli.yaml
++++ b/src/my_cli/.github/workflows/my_cli.yaml
+@@ -22,6 +22,10 @@ jobs:
+
+   build:
+     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
++{{#publishable}}
++  pana:
++    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
++{{/publishable}}
+
+   verify-version:
+     runs-on: ubuntu-latest
