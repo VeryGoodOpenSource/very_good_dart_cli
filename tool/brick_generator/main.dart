@@ -41,9 +41,7 @@ void main() async {
               // executable_name
               .replaceAll('my_executable', '{{executable_name.snakeCase()}}')
               // description
-              .replaceAll('A Very Good CLI application', '{{description}}')
-              // year
-              .replaceAll('2022', '{{current_year}}'),
+              .replaceAll('A Very Good CLI application', '{{description}}'),
         );
 
         final fileSegments = file.path.split('/').sublist(2);
