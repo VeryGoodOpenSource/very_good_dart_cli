@@ -24,6 +24,11 @@ void main() async {
       var file = _;
 
       try {
+        if (p.basename(file.path) == 'LICENSE') {
+          await file.delete(recursive: true);
+          return;
+        }
+
         final contents = await file.readAsString();
         file = await file.writeAsString(
           contents
@@ -63,8 +68,6 @@ void main() async {
     }),
   );
   await Directory(p.join(targetPath, 'my_cli')).delete(recursive: true);
-  await File(p.join(targetPath, '{{project_name.snakeCase()}}', 'LICENSE'))
-      .delete(recursive: true);
 }
 
 class Shell {
