@@ -5,15 +5,6 @@ import 'package:path/path.dart' as p;
 final targetPath = p.join('brick', '__brick__');
 final sourcePath = p.join('src');
 
-final copyrightHeader = '''
-// Copyright (c) {{current_year}}, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-''';
-
 void main() async {
   // Remove Previously Generated Files
   final targetDir = Directory(targetPath);
@@ -33,15 +24,6 @@ void main() async {
       var file = _;
 
       try {
-        // Generated file, do not create it with copyright header
-        final isVersionFile =
-            file.path == 'brick/__brick__/my_cli/lib/src/version.dart';
-
-        if (p.extension(file.path) == '.dart' && !isVersionFile) {
-          final contents = await file.readAsString();
-          file = await file.writeAsString('$copyrightHeader\n$contents');
-        }
-
         final contents = await file.readAsString();
         file = await file.writeAsString(
           contents
@@ -81,6 +63,8 @@ void main() async {
     }),
   );
   await Directory(p.join(targetPath, 'my_cli')).delete(recursive: true);
+  await File(p.join(targetPath, '{{project_name.snakeCase()}}', 'LICENSE'))
+      .delete(recursive: true);
 }
 
 class Shell {
