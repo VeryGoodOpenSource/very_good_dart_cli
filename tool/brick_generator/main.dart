@@ -5,15 +5,6 @@ import 'package:path/path.dart' as p;
 final targetPath = p.join('brick', '__brick__');
 final sourcePath = p.join('src');
 
-final copyrightHeader = '''
-// Copyright (c) {{current_year}}, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-''';
-
 void main() async {
   // Remove Previously Generated Files
   final targetDir = Directory(targetPath);
@@ -33,13 +24,9 @@ void main() async {
       var file = _;
 
       try {
-        // Generated file, do not create it with copyright header
-        final isVersionFile =
-            file.path == 'brick/__brick__/my_cli/lib/src/version.dart';
-
-        if (p.extension(file.path) == '.dart' && !isVersionFile) {
-          final contents = await file.readAsString();
-          file = await file.writeAsString('$copyrightHeader\n$contents');
+        if (p.basename(file.path) == 'LICENSE') {
+          await file.delete(recursive: true);
+          return;
         }
 
         final contents = await file.readAsString();
@@ -54,9 +41,7 @@ void main() async {
               // executable_name
               .replaceAll('my_executable', '{{executable_name.snakeCase()}}')
               // description
-              .replaceAll('A Very Good CLI application', '{{description}}')
-              // year
-              .replaceAll('2022', '{{current_year}}'),
+              .replaceAll('A Very Good CLI application', '{{description}}'),
         );
 
         final fileSegments = file.path.split('/').sublist(2);

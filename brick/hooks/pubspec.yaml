@@ -1,7 +1,0 @@
-name: random_color_hooks
-
-environment:
-  sdk: ">=2.16.0 <3.0.0"
-
-dependencies:
-  mason:
