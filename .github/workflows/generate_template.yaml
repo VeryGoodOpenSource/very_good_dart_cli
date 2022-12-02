@@ -17,11 +17,11 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - name: Install Dependencies
-        working-directory: tool/brick_generator
+        working-directory: tool/generator
         run: dart pub get
 
       - name: Generate Template
-        run: dart ./tool/brick_generator/main.dart
+        run: dart ./tool/generator/main.dart
 
       - name: Config Git User
         run: |
