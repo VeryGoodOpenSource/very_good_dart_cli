@@ -1,5 +1,9 @@
 name: {{project_name.snakeCase()}}
 
+concurrency:
+  group: ${{#mustacheCase}}github.workflow{{/mustacheCase}}-${{#mustacheCase}}github.ref{{/mustacheCase}}
+  cancel-in-progress: true
+
 on:
   pull_request:
     paths:
