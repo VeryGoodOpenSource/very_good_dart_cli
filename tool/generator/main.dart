@@ -17,19 +17,16 @@ void main() async {
 
   // Apply patches
   await Future.wait(
-    Directory('patches').listSync()
-    .whereType<File>()
-    .map(
-          (file) async {
-            final process = await Process.start('git', ['apply']);
-            process.stdin.write(
-              file.readAsStringSync().replaceAll('src', targetPath)
-            );
-            await process.stdin.close();
+    Directory('patches').listSync().whereType<File>().map(
+      (file) async {
+        final process = await Process.start('git', ['apply']);
+        process.stdin
+            .write(file.readAsStringSync().replaceAll('src', targetPath));
+        await process.stdin.close();
 
-            await process.exitCode;
-          },
-        ),
+        await process.exitCode;
+      },
+    ),
   );
 
   // Convert Values to Variables
@@ -44,6 +41,19 @@ void main() async {
         if (p.basename(file.path) == 'LICENSE') {
           await file.delete(recursive: true);
           return;
+        }
+
+        if (p.isWithin(
+          p.join(targetPath, 'my_cli', '.github', 'workflows'),
+          file.path,
+        )) {
+          final contents = file.readAsStringSync();
+          file.writeAsStringSync(
+            contents.replaceFirst(
+              r'group: ${{ github.workflow }}-${{ github.ref }}',
+              r'group: ${{#mustacheCase}}github.workflow{{/mustacheCase}}-${{#mustacheCase}}github.ref{{/mustacheCase}}',
+            ),
+          );
         }
 
         final contents = await file.readAsString();
