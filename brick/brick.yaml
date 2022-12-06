@@ -22,3 +22,8 @@ vars:
     description: A short description for the CLI
     default: A Very Good Dart CLI
     prompt: Please enter a description for the CLI.
+  publishable:
+    type: boolean
+    description: Whether the generated package is intended to be published.
+    default: false
+    prompt: Will the package be published?
