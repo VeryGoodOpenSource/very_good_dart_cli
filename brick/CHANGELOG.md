@@ -1,3 +1,8 @@
+# 0.2.1
+
+- fix: windows path resolution
+- feat: add ci concurrency group to workflow
+
 # 0.2.0
 
 - **BREAKING** feat: add `publishable` flag (defaults to `false`)
