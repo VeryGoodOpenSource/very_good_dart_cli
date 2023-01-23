@@ -9,7 +9,9 @@ environment:
 dependencies:
   args: ^2.3.1
   mason_logger: ^0.2.0
-  pub_updater: ^0.2.1
+  pub_updater:
+    git:
+      url: https://github.com/VeryGoodOpenSource/pub_updater
 
 dev_dependencies:
   build_runner: ^2.0.0
