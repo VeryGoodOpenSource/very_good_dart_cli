@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
@@ -6,11 +8,13 @@ import 'package:{{project_name.snakeCase()}}/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
-import 'commands/update_command_test.dart';
-
 class MockLogger extends Mock implements Logger {}
 
 class MockPubUpdater extends Mock implements PubUpdater {}
+
+class MockProcessResult extends Mock implements ProcessResult {}
+
+class MockProgress extends Mock implements Progress {}
 
 const latestVersion = '0.0.0';
 
@@ -23,9 +27,11 @@ void main() {
     late PubUpdater pubUpdater;
     late Logger logger;
     late {{project_name.pascalCase()}}CommandRunner commandRunner;
+    late ProcessResult processResult;
 
     setUp(() {
       pubUpdater = MockPubUpdater();
+      processResult = MockProcessResult();
 
       when(
         () => pubUpdater.getLatestVersion(any()),
@@ -54,15 +60,18 @@ void main() {
         () => pubUpdater.getLatestVersion(any()),
       ).thenAnswer((_) async => latestVersion);
       when(
-        () => pubUpdater.update(packageName: packageName),
-      ).thenAnswer((_) => Future.value(FakeProcessResult()));
+        () => pubUpdater.update(
+          packageName: packageName,
+          versionConstraint: any(named: 'versionConstraint'),
+        ),
+      ).thenAnswer((_) => Future.value(processResult));
       when(
         () => pubUpdater.isUpToDate(
           packageName: any(named: 'packageName'),
           currentVersion: any(named: 'currentVersion'),
         ),
       ).thenAnswer((_) => Future.value(true));
-
+      when(() => processResult.exitCode).thenReturn(0);
       final progress = MockProgress();
       final progressLogs = <String>[];
       when(() => progress.complete(any())).thenAnswer((_) {
