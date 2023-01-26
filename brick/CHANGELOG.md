@@ -1,3 +1,7 @@
+# 0.2.2
+
+- fix: update silently fails when the sdk doesnt support most recent version
+
 # 0.2.1
 
 - fix: windows path resolution
