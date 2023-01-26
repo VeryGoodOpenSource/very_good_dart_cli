@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:{{project_name.snakeCase()}}/src/command_runner.dart';
@@ -46,13 +48,24 @@ class UpdateCommand extends Command<int> {
     }
 
     final updateProgress = _logger.progress('Updating to $latestVersion');
+    late ProcessResult result;
     try {
-      await _pubUpdater.update(packageName: packageName);
+      result = await _pubUpdater.update(
+        packageName: packageName,
+        versionConstraint: latestVersion,
+      );
     } catch (error) {
       updateProgress.fail();
       _logger.err('$error');
       return ExitCode.software.code;
     }
+
+    if (result.exitCode != ExitCode.success.code) {
+      updateProgress.fail();
+      _logger.err('Error updating Very Good CLI: ${result.stderr}');
+      return ExitCode.software.code;
+    }
+
     updateProgress.complete('Updated to $latestVersion');
 
     return ExitCode.success.code;
