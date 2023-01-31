@@ -48,7 +48,8 @@ class UpdateCommand extends Command<int> {
     }
 
     final updateProgress = _logger.progress('Updating to $latestVersion');
-    late ProcessResult result;
+
+    late final ProcessResult result;
     try {
       result = await _pubUpdater.update(
         packageName: packageName,
@@ -62,7 +63,7 @@ class UpdateCommand extends Command<int> {
 
     if (result.exitCode != ExitCode.success.code) {
       updateProgress.fail();
-      _logger.err('Error updating Very Good CLI: ${result.stderr}');
+      _logger.err('Error updating CLI: ${result.stderr}');
       return ExitCode.software.code;
     }
 
