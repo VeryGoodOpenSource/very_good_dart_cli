@@ -145,7 +145,7 @@ void main() {
         ).thenAnswer((_) async => latestVersion);
         when(
           () => pubUpdater.update(
-            packageName: packageName,
+            packageName: any(named: 'packageName'),
             versionConstraint: any(named: 'versionConstraint'),
           ),
         ).thenAnswer((_) async => processResult);
@@ -178,7 +178,7 @@ void main() {
         verifyNever(() => logger.progress('Updating to $latestVersion'));
         verifyNever(
           () => pubUpdater.update(
-            packageName: packageName,
+            packageName: any(named: 'packageName'),
             versionConstraint: any(named: 'versionConstraint'),
           ),
         );
