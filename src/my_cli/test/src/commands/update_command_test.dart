@@ -157,7 +157,7 @@ void main() {
         verify(
           () => pubUpdater.update(
             packageName: packageName,
-            versionConstraint: any(named: 'versionConstraint'),
+            versionConstraint: latestVersion,
           ),
         ).called(1);
       },
