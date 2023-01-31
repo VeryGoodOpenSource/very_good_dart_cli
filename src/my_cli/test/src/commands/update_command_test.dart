@@ -140,7 +140,6 @@ void main() {
     test(
       'updates when newer version exists',
       () async {
-        final processResult = _MockProcessResult();
         when(
           () => pubUpdater.getLatestVersion(any()),
         ).thenAnswer((_) async => latestVersion);
