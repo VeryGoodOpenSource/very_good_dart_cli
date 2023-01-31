@@ -6,6 +6,7 @@ on:
       - .github/workflows/generate_template.yaml
       - tool/generator/**
       - src/my_cli/**
+      - patches/**
     branches:
       - main
 
