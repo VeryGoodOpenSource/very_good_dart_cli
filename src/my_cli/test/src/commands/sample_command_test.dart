@@ -5,9 +5,9 @@ import 'package:my_cli/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
-class MockLogger extends Mock implements Logger {}
+class _MockLogger extends Mock implements Logger {}
 
-class MockPubUpdater extends Mock implements PubUpdater {}
+class _MockPubUpdater extends Mock implements PubUpdater {}
 
 void main() {
   group('sample', () {
@@ -16,13 +16,13 @@ void main() {
     late MyCLICommandRunner commandRunner;
 
     setUp(() {
-      pubUpdater = MockPubUpdater();
+      pubUpdater = _MockPubUpdater();
 
       when(
         () => pubUpdater.getLatestVersion(any()),
       ).thenAnswer((_) async => packageVersion);
 
-      logger = MockLogger();
+      logger = _MockLogger();
       commandRunner = MyCLICommandRunner(
         logger: logger,
         pubUpdater: pubUpdater,
