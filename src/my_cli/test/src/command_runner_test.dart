@@ -8,13 +8,13 @@ import 'package:my_cli/src/version.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
-class MockLogger extends Mock implements Logger {}
+class _MockLogger extends Mock implements Logger {}
 
-class MockPubUpdater extends Mock implements PubUpdater {}
+class _MockProcessResult extends Mock implements ProcessResult {}
 
-class MockProcessResult extends Mock implements ProcessResult {}
+class _MockProgress extends Mock implements Progress {}
 
-class MockProgress extends Mock implements Progress {}
+class _MockPubUpdater extends Mock implements PubUpdater {}
 
 const latestVersion = '0.0.0';
 
@@ -26,18 +26,20 @@ void main() {
   group('MyCLICommandRunner', () {
     late PubUpdater pubUpdater;
     late Logger logger;
-    late MyCLICommandRunner commandRunner;
     late ProcessResult processResult;
+    late MyCLICommandRunner commandRunner;
 
     setUp(() {
-      pubUpdater = MockPubUpdater();
-      processResult = MockProcessResult();
+      pubUpdater = _MockPubUpdater();
 
       when(
         () => pubUpdater.getLatestVersion(any()),
       ).thenAnswer((_) async => packageVersion);
 
-      logger = MockLogger();
+      logger = _MockLogger();
+
+      processResult = _MockProcessResult();
+      when(() => processResult.exitCode).thenReturn(ExitCode.success.code);
 
       commandRunner = MyCLICommandRunner(
         logger: logger,
@@ -55,7 +57,7 @@ void main() {
       verify(() => logger.info(updatePrompt)).called(1);
     });
 
-    test('doesnt show update message when using update command', () async {
+    test('does not show update message when using update command', () async {
       when(
         () => pubUpdater.getLatestVersion(any()),
       ).thenAnswer((_) async => latestVersion);
@@ -64,15 +66,15 @@ void main() {
           packageName: packageName,
           versionConstraint: any(named: 'versionConstraint'),
         ),
-      ).thenAnswer((_) => Future.value(processResult));
+      ).thenAnswer((_) async => processResult);
       when(
         () => pubUpdater.isUpToDate(
           packageName: any(named: 'packageName'),
           currentVersion: any(named: 'currentVersion'),
         ),
-      ).thenAnswer((_) => Future.value(true));
-      when(() => processResult.exitCode).thenReturn(0);
-      final progress = MockProgress();
+      ).thenAnswer((_) async => true);
+
+      final progress = _MockProgress();
       final progressLogs = <String>[];
       when(() => progress.complete(any())).thenAnswer((_) {
         final message = _.positionalArguments.elementAt(0) as String?;
