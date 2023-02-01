@@ -1,3 +1,7 @@
+# 0.2.3
+
+- feat: upgrade to Dart 2.19
+
 # 0.2.2
 
 - fix: update silently fails when the sdk doesnt support most recent version
