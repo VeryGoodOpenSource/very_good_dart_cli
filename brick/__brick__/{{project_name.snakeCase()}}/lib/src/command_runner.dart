@@ -1,5 +1,6 @@
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
+import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:{{project_name.snakeCase()}}/src/commands/commands.dart';
 import 'package:{{project_name.snakeCase()}}/src/version.dart';
@@ -16,7 +17,7 @@ const description = '{{description}}';
 /// $ {{executable_name.snakeCase()}} --version
 /// ```
 /// {@endtemplate}
-class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
+class {{project_name.pascalCase()}}CommandRunner extends CompletionCommandRunner<int> {
   /// {@macro {{project_name.snakeCase()}}_command_runner}
   {{project_name.pascalCase()}}CommandRunner({
     Logger? logger,
@@ -78,6 +79,13 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
 
   @override
   Future<int?> runCommand(ArgResults topLevelResults) async {
+    // Fast track completion command
+    if (topLevelResults.command?.name == 'completion') {
+      await super.runCommand(topLevelResults);
+      return ExitCode.success.code;
+    }
+
+    // Verbose logs
     _logger
       ..detail('Argument information:')
       ..detail('  Top level options:');
@@ -98,6 +106,7 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
       }
     }
 
+    // Run the command or show version
     final int? exitCode;
     if (topLevelResults['version'] == true) {
       _logger.info(packageVersion);
@@ -105,9 +114,12 @@ class {{project_name.pascalCase()}}CommandRunner extends CommandRunner<int> {
     } else {
       exitCode = await super.runCommand(topLevelResults);
     }
+
+    // Check for updates
     if (topLevelResults.command?.name != UpdateCommand.commandName) {
       await _checkForUpdates();
     }
+
     return exitCode;
   }
 
