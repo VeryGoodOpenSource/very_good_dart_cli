@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_cli/src/command_runner.dart';
@@ -57,6 +58,20 @@ void main() {
       verify(() => logger.info(updatePrompt)).called(1);
     });
 
+    test(
+      'Does not show update message when the shell calls the '
+      'completion command',
+      () async {
+        when(
+          () => pubUpdater.getLatestVersion(any()),
+        ).thenAnswer((_) async => latestVersion);
+
+        final result = await commandRunner.run(['completion']);
+        expect(result, equals(ExitCode.success.code));
+        verifyNever(() => logger.info(updatePrompt));
+      },
+    );
+
     test('does not show update message when using update command', () async {
       when(
         () => pubUpdater.getLatestVersion(any()),
@@ -91,6 +106,7 @@ void main() {
         () {
       final commandRunner = MyCLICommandRunner();
       expect(commandRunner, isNotNull);
+      expect(commandRunner, isA<CompletionCommandRunner<int>>());
     });
 
     test('handles FormatException', () async {
