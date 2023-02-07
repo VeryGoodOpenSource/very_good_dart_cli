@@ -92,7 +92,7 @@ void main() {
         () {
       final commandRunner = MyCLICommandRunner();
       expect(commandRunner, isNotNull);
-      expect(commandRunner, isA<CompletionCommandRunner>());
+      expect(commandRunner, isA<CompletionCommandRunner<int>>());
     });
 
     test('handles FormatException', () async {

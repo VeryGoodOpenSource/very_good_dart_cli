@@ -120,7 +120,6 @@ class MyCLICommandRunner extends CompletionCommandRunner<int> {
       await _checkForUpdates();
     }
 
-
     return exitCode;
   }
 
