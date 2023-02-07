@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_cli/src/command_runner.dart';
@@ -91,6 +92,7 @@ void main() {
         () {
       final commandRunner = MyCLICommandRunner();
       expect(commandRunner, isNotNull);
+      expect(commandRunner, isA<CompletionCommandRunner>());
     });
 
     test('handles FormatException', () async {

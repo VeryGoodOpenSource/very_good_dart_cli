@@ -1,5 +1,6 @@
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
+import 'package:cli_completion/cli_completion.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:my_cli/src/commands/commands.dart';
 import 'package:my_cli/src/version.dart';
@@ -16,7 +17,7 @@ const description = 'A Very Good CLI application';
 /// $ my_executable --version
 /// ```
 /// {@endtemplate}
-class MyCLICommandRunner extends CommandRunner<int> {
+class MyCLICommandRunner extends CompletionCommandRunner<int> {
   /// {@macro my_cli_command_runner}
   MyCLICommandRunner({
     Logger? logger,
@@ -78,6 +79,13 @@ class MyCLICommandRunner extends CommandRunner<int> {
 
   @override
   Future<int?> runCommand(ArgResults topLevelResults) async {
+    // Fast track completion command
+    if (topLevelResults.command?.name == 'completion') {
+      await super.runCommand(topLevelResults);
+      return ExitCode.success.code;
+    }
+
+    // Verbose logs
     _logger
       ..detail('Argument information:')
       ..detail('  Top level options:');
@@ -98,6 +106,7 @@ class MyCLICommandRunner extends CommandRunner<int> {
       }
     }
 
+    // Run the command or show version
     final int? exitCode;
     if (topLevelResults['version'] == true) {
       _logger.info(packageVersion);
@@ -105,9 +114,13 @@ class MyCLICommandRunner extends CommandRunner<int> {
     } else {
       exitCode = await super.runCommand(topLevelResults);
     }
+
+    // Check for updates
     if (topLevelResults.command?.name != UpdateCommand.commandName) {
       await _checkForUpdates();
     }
+
+
     return exitCode;
   }
 
