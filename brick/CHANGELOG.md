@@ -1,3 +1,7 @@
+# 0.3.1
+
+- feat: upgrade to `very_good_analysis 4.0.0`
+
 # 0.3.0
 
 - feat: add completion
