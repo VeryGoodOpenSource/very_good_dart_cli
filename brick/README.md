@@ -15,6 +15,7 @@ A Very Good Dart CLI created by Very Good Ventures 🦄.
 - ✅ A sample command
 - ✅ Colorful logging
 - ✅ Automatic update prompts
+- ✅ Tab completion for bash and zsh
 - ✅ GitHub Workflow powered by [Very Good Workflows][very_good_workflows_link]
 - ✅ Strict lint rules powered by [Very Good Analysis][very_good_analysis_link]
 - ✅ Dependabot Integration
