@@ -1,3 +1,7 @@
+# 0.3.0
+
+- feat: add completion
+
 # 0.2.3
 
 - feat: upgrade to Dart 2.19
