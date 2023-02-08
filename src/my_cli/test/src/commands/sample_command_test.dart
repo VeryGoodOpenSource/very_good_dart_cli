@@ -1,32 +1,18 @@
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_cli/src/command_runner.dart';
-import 'package:my_cli/src/version.dart';
-import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
 class _MockLogger extends Mock implements Logger {}
 
-class _MockPubUpdater extends Mock implements PubUpdater {}
-
 void main() {
   group('sample', () {
-    late PubUpdater pubUpdater;
     late Logger logger;
     late MyCLICommandRunner commandRunner;
 
     setUp(() {
-      pubUpdater = _MockPubUpdater();
-
-      when(
-        () => pubUpdater.getLatestVersion(any()),
-      ).thenAnswer((_) async => packageVersion);
-
       logger = _MockLogger();
-      commandRunner = MyCLICommandRunner(
-        logger: logger,
-        pubUpdater: pubUpdater,
-      );
+      commandRunner = MyCLICommandRunner(logger: logger);
     });
 
     test('tells a joke', () async {
