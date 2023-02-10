@@ -30,7 +30,7 @@ dart pub global activate --source=path <path to this package>
 # Sample command
 $ {{executable_name.snakeCase()}} sample
 
-# Sample command optioon
+# Sample command option
 $ {{executable_name.snakeCase()}} sample --cyan
 
 # Show CLI version
