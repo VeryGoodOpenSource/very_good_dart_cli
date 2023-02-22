@@ -23,3 +23,12 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
     with:
       working_directory: src/my_cli
+
+  spell-check:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
+    with:
+      includes: |
+        **/*.md
+        !brick/**/*.md
+        .*/**/*.md
+      modified_files_only: false
