@@ -1,3 +1,8 @@
+# 0.3.2
+
+- feat: update workflows, add spellcheck
+- fix: remove unused pub updater from test 
+
 # 0.3.1
 
 - feat: upgrade to `very_good_analysis 4.0.0`
