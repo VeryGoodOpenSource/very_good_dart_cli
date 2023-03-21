@@ -1,3 +1,7 @@
+# 0.3.3
+
+- chore: support dart sdk 2.18.0
+
 # 0.3.2
 
 - feat: update workflows, add spellcheck
