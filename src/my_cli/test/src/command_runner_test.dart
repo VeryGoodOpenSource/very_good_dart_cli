@@ -11,8 +11,6 @@ import 'package:test/test.dart';
 
 class _MockLogger extends Mock implements Logger {}
 
-class _MockProcessResult extends Mock implements ProcessResult {}
-
 class _MockProgress extends Mock implements Progress {}
 
 class _MockPubUpdater extends Mock implements PubUpdater {}
@@ -27,7 +25,6 @@ void main() {
   group('MyCLICommandRunner', () {
     late PubUpdater pubUpdater;
     late Logger logger;
-    late ProcessResult processResult;
     late MyCLICommandRunner commandRunner;
 
     setUp(() {
@@ -38,9 +35,6 @@ void main() {
       ).thenAnswer((_) async => packageVersion);
 
       logger = _MockLogger();
-
-      processResult = _MockProcessResult();
-      when(() => processResult.exitCode).thenReturn(ExitCode.success.code);
 
       commandRunner = MyCLICommandRunner(
         logger: logger,
@@ -81,7 +75,7 @@ void main() {
           packageName: packageName,
           versionConstraint: any(named: 'versionConstraint'),
         ),
-      ).thenAnswer((_) async => processResult);
+      ).thenAnswer((_) async => ProcessResult(0, 0, null, null));
       when(
         () => pubUpdater.isUpToDate(
           packageName: any(named: 'packageName'),
