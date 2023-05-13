@@ -40,7 +40,9 @@ void main() {
           packageName: packageName,
           versionConstraint: latestVersion,
         ),
-      ).thenAnswer((_) async => ProcessResult(0, 0, null, null));
+      ).thenAnswer(
+        (_) async => ProcessResult(0, ExitCode.success.code, null, null),
+      );
       when(
         () => pubUpdater.isUpToDate(
           packageName: any(named: 'packageName'),
@@ -141,7 +143,9 @@ void main() {
             packageName: any(named: 'packageName'),
             versionConstraint: any(named: 'versionConstraint'),
           ),
-        ).thenAnswer((_) async => ProcessResult(0, 0, null, null));
+        ).thenAnswer(
+          (_) async => ProcessResult(0, ExitCode.success.code, null, null),
+        );
         when(() => logger.progress(any())).thenReturn(_MockProgress());
         final result = await commandRunner.run(['update']);
         expect(result, equals(ExitCode.success.code));
