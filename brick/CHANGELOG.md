@@ -1,3 +1,7 @@
+# 0.5.1
+
+- feat: upgrade to very_good_analysis ^5.1.0
+
 # 0.5.0
 
 - feat: update very good analysis to v5 and fix patch
