@@ -1,4 +1,0 @@
-diff --git a/src/my_cli/CHANGELOG.md "b/src/my_cli/{{#publishable}}CHANGELOG.md{{/publishable}}"
-similarity index 100%
-rename from src/my_cli/CHANGELOG.md
-rename to "src/my_cli/{{#publishable}}CHANGELOG.md{{/publishable}}"
