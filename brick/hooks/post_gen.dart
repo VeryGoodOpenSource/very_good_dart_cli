@@ -20,7 +20,7 @@ Future<void> run(
   // been generated.
   //
   // We only fix for the [directives_ordering](https://dart.dev/tools/linter-rules/directives_ordering)
-  // linter rules, as the other rules should be tackled by the template itself.
+  // linter rules, as the other rule should be tackled by the template itself.
   await runProcess('dart', [
     'fix',
     Directory.current.path,
