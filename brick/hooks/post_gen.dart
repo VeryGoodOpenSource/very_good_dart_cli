@@ -11,10 +11,11 @@ typedef RunProcess = Future<ProcessResult> Function(
   bool runInShell,
 });
 
-Future<void> run(
-  HookContext context, {
-  @visibleForTesting RunProcess runProcess = Process.run,
-}) async {
+Future<void> run(HookContext context,
+// We intentionally ignore the trailing comma until the following mason issue is
+// fixed: https://github.com/felangel/mason/pull/1164
+// ignore: require_trailing_commas
+    {@visibleForTesting RunProcess runProcess = Process.run}) async {
   // Some imports are relative to the user specified package name, hence
   // we try to fix the import directive ordering after the template has
   // been generated.
