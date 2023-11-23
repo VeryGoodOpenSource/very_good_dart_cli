@@ -59,7 +59,7 @@ Where `<project-name>` is the name of your project.
 
 💡 **Note**: Optionally, you can [generate a project using Very Good Dart CLI with mason](https://brickhub.dev/bricks/very_good_dart_cli/0.5.1#usage).
 
-[coverage_badge]: src/my_cli/coverage_badge.svg
+[coverage_badge]: coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [logo_black]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_black.png#gh-light-mode-only
