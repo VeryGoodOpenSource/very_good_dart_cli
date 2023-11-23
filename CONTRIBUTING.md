@@ -47,7 +47,7 @@ This will generate a project using Very Good Dart CLI under [`output`](output) w
 
 Before creating a Pull Request please:
 
-1. [Fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) the [GitHub repository](https://github.com/VeryGoodOpenSource/very_good_core) and create your branch from `main`:
+1. [Fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) the [GitHub repository](https://github.com/VeryGoodOpenSource/very_good_dart_cli) and create your branch from `main`:
 
 ```sh
 # 🪵 Branch from `main`
@@ -68,7 +68,7 @@ mason get
 
 ```sh
 # 🧱 Generate a project using the local Very Good Dart CLI brick (from project root)
-mason make very_good_core --config-path brick/config.json --output-dir output
+mason make very_good_dart_cli  --config-path brick/config.json --output-dir output
 ```
 
 4. Add tests! Pull Requests without 100% test coverage will **not** be merged. If you're unsure on how to do so watch our [Testing Fundamentals Course](https://www.youtube.com/watch?v=M_eZg-X789w&list=PLprI2satkVdFwpxo_bjFkCxXz5RluG8FY).
@@ -105,6 +105,6 @@ dart analyze --fatal-infos --fatal-warnings .
 
 8. Create the Pull Request with a meaningful description, linking to the original issue where possible.
 
-9. Verify that all [status checks](https://github.com/VeryGoodOpenSource/very_good_core/actions/) are passing for your Pull Request once they have been approved to run by a maintainer.
+9. Verify that all [status checks](https://github.com/VeryGoodOpenSource/very_good_dart_cli /actions/) are passing for your Pull Request once they have been approved to run by a maintainer.
 
 💡 **Note**: While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional work, tests, or other changes before your pull request can be accepted.
