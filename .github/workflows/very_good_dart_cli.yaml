@@ -1,4 +1,4 @@
-name: very_good_core
+name: very_good_dart_cli
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
