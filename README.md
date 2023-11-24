@@ -48,7 +48,7 @@ the [Very Good CLI][very_good_cli_link].
 dart pub global activate very_good_cli
 ```
 
-3. Generate a project using Very Good CLI:
+3. Generate a project using Very Good Dart CLI:
 
 ```sh
 # 🚀 Create a new project using Very Good Dart CLI
