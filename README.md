@@ -1,5 +1,14 @@
 # Very Good Dart CLI
 
+## 🚶‍♂️ [Repository has moved](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_dart_cli)
+
+The Very Good Dart CLI template is now developed within the [Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates) repository, and can be found at [very_good_templates/very_good_dart_cli](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_dart_cli).
+
+Please file new issues on
+[Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates).
+
+---
+
 [![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
 [![Very Good Ventures][logo_black]][very_good_ventures_link_light]
 
